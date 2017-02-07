@@ -127,5 +127,86 @@ Lehrveranstaltungsevaluation abgeben.
 \subsection{Rapidminer Studio}
 \label{sec:example:impl:rm}
 
+Um das Beispielszenario in RapidMiner Studio umzusetzen wurde der folgende
+Prozess modelliert:
+
+\begin{figure}[htb]
+  \center
+	\includegraphics[width=0.9\textwidth]{gfx/rmproc.png}
+	\caption{Der Beispielprozess im RapidMiner Studio}
+	\label{fig:example:impl:rm:proc}
+\end{figure}
+
+Zunächst wurde die .csv Datei mit dem „Retrieve Dataset“ Operator in den Prozess
+geladen. Anschließend wurden per „Filter Example“ sowohl alle Datensätze mit
+NULL Einträgen entfernt, als auch die Einträge, welche die Frage nach der
+Gesamtnote beinhalten, extrahiert. Danach wurde die Spalte „Answer“, welche den
+Wert der Note beinhaltet als „Label“ definiert. Zuletzt wurden die Daten dann
+dem „Decision Tree“ Algorithmus übergeben und das Ergebnis zurück in die Anzeige
+geladen.
+
+\begin{figure}[htb]
+	\includegraphics[width=\textwidth]{gfx/rmres.png}
+	\caption{Das Ergebnis im RapidMiner Studio}
+	\label{fig:example:impl:rm:res}
+\end{figure}
+
+Das Ergebnis ist ein Baum, an welchem erkennbar ist, dass in den meisten Fällen
+die Note „2“ für die Lehrveranstaltung vergeben wurde. Einzig bei der
+Betrachtung des Studienfaches fällt auf, dass Studierende, welche dem „Major“
+Wirtschaftsmathematik angehören, eine 3 vergeben haben. An den Blättern lässt
+sich außerdem ablesen, wie groß die sog. „Confidence“ ist, also auf wie vielen
+Daten, die jeweilige Entscheidung basiert. Kenntlich gemacht wird dies durch
+die jeweiligen farblichen Balken. Diese sind wiefolgt zu interpretieren: Je
+dicker (höher) der Balken, desto mehr Datensätze liegen der Entscheidung
+zugrunde. Anhand (der Anzahl) der Farben erkennt man wieviel unterschiedliche
+Werte für die jeweilige Klasse gefunden wurden und entsprechend an der „breite“
+der Farbe kann man ablesen wie oft der jeweilige Wert in Relation aufgetaucht
+ist.
+
 \subsection{Microsoft Azure Machine Learning Studio}
 \label{sec:example:impl:msa}
+
+Das korrespondierende Experiment im Microsoft Azure Machine Learning Studio
+sieht folgendermaßen aus:
+
+\begin{figure}[htb]
+  \center
+	\includegraphics[width=0.85\textwidth]{gfx/msaproc.png}
+	\caption{Das Beispiel-Experiment im Microsoft Azure Machine Learning Studio}
+	\label{fig:example:impl:msa:proc}
+\end{figure}
+
+Hier fällt auf der rechten Seite auf, dass je 2 „Split Data“ und „Edit Metadata“
+Operatoren gebraucht wurden. Um die selbe Filter-Funktionalität wie beim
+RapidMiner Studio Prozess abzubilden, mussten zunächst alle NULL Einträge und
+anschließend ebenfalls alle Datensätze, welche die Frage nach der Gesamtnote
+beinhalten, herausgefiltert werden. Dafür waren hier 2 separate „Split“
+Operationen notwendig. Des Weiteren wurde sowohl für die Definition des
+Attributs „Answer“ als Label, als auch für die Definition der restlichen
+Attribute als „klassifizierende Attribute“ je ein „Edit Metadata“ Operator
+benötigt. Zuletzt fällt noch auf, dass anstatt eines Decision Tree Algorithmus
+ein „Multiclass Decision Forest“, welcher als Konfiguration eine Decision-Tree
+Anzahl von 1 bekommen hat, zur Berechnung verwendet wurde. Dies war notwendig
+um überhaupt ein auswertbares Ergebnis zu erhalten, welches zumindest
+Ansatzweise mit dem Ergebnis des RapidMiner Studios vergleichbar ist.
+
+\begin{figure}[htb]
+  \center
+	\includegraphics[width=0.85\textwidth]{gfx/msares.png}
+	\caption{Das Ergebnis im Microsoft Azure Machine Learning Studio}
+	\label{fig:example:impl:msa:res}
+\end{figure}
+
+Wie aufgrund der Tatsache, dass ein anderer Algorithmus verwendet wurde,
+anzunehmen ist, weicht das Ergebnis vom vorherigen Ergebnis des RapidMiner
+Studios in einigen Punkten ab. Der Baum zeigt, dass nicht zwangsläufig das
+Studienfach ausschlaggebend für eine schlechtere Bewertung war, sondern das
+Semester in welchem die Umfrage durchgeführt wurde.
+Auch hier lässt sich anhand der Blätter ablesen, wie groß die „Confidence“ der
+jeweiligen Klasse ist. So lässt sich also interpretieren, dass Studierende, die
+nicht dem „Major“ Angewandte Informatik angehören, dafür allerdings im
+Wintersemester 2012/13 an der Umfrage teilgenommen haben überwiegend die Note
+„3“ vergeben haben. Die Prozentzahl zeigt dabei an, dass 40\% der zugrunde
+liegenden Datensätze in die Klasse „3“ fallen, wohingegen die anderen 60\%
+sich auf die restlichen Werte 1, 2 bzw. 4, 5 und 6 verteilen.
