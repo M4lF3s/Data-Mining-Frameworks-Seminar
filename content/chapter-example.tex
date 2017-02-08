@@ -42,7 +42,7 @@ der vorliegenden Datengrundlage sollen nun folgende Fragen beantwortet werden:
 \label{sec:example:data:du}
 
 Im nächsten Schritt ist es wichtig herauszufinden, wie die Daten erhoben wurden.
-Im Beispiel der Veranstaltungsevaluationen ist dies durch austeilen eines
+Im Beispiel der Veranstaltungsevaluationen ist dies durch Austeilen eines
 Fragebogens erfolgt.
 
 \begin{figure}[htb]
@@ -73,8 +73,8 @@ befinden und wie diese strukturiert sind.
 \subsection{Data Preparation}
 \label{sec:example:data:dp}
 
-Wurden nun die entsprechenden Tabellen bzw. deren Attribute festgelegt müssen
-diese nun im nächsten Schritt aus der Datenbank extrahiert werden um separat
+Wurden nun die entsprechenden Tabellen bzw. deren Attribute festgelegt, müssen
+diese nun im nächsten Schritt aus der Datenbank extrahiert werden, um separat
 Analysiert werden zu können. Dies geschieht mit der folgenden SQL-Abfrage.
 
 \begin{figure}[htb]
@@ -84,14 +84,14 @@ Analysiert werden zu können. Dies geschieht mit der folgenden SQL-Abfrage.
 \end{figure}
 
 Die Ergebnisdatensätze der SQL-Abfrage können nun als .csv Datei exportiert
-werden um danach in der jeweiligen Data Mining Software verarbeitet werden zu
+werden, um danach in der jeweiligen Data Mining Software verarbeitet werden zu
 können.
 
 \subsection{Modeling}
 \label{sec:example:data:mod}
 
 In der Modellierungsphase muss nun ein Algorithmus gewählt werden, welcher die
-vorbereiteten Daten so verarbeiten kann, dass die Anfangs definierten
+vorbereiteten Daten so verarbeiten kann, dass die definierten
 Fragestellungen beantwortet werden können. In unserem Beispiel eignet sich die
 Frage nach der Gesamtnote, da dieses Attribut eine gute Repräsentation der
 Gesamtbewertung für eine Veranstaltung darstellt. \\
@@ -157,11 +157,11 @@ Betrachtung des Studienfaches fällt auf, dass Studierende, welche dem „Major�
 Wirtschaftsmathematik angehören, eine 3 vergeben haben. An den Blättern lässt
 sich außerdem ablesen, wie groß die sog. „Confidence“ ist, also auf wie vielen
 Daten, die jeweilige Entscheidung basiert. Kenntlich gemacht wird dies durch
-die jeweiligen farblichen Balken. Diese sind wiefolgt zu interpretieren: Je
+die jeweiligen farblichen Balken. Diese sind wie folgt zu interpretieren: Je
 dicker (höher) der Balken, desto mehr Datensätze liegen der Entscheidung
 zugrunde. Anhand (der Anzahl) der Farben erkennt man wieviel unterschiedliche
-Werte für die jeweilige Klasse gefunden wurden und entsprechend an der „breite“
-der Farbe kann man ablesen wie oft der jeweilige Wert in Relation aufgetaucht
+Werte für die jeweilige Klasse gefunden wurden, und entsprechend an der „breite“
+der Farbe kann man ablesen, wie oft der jeweilige Wert in Relation aufgetaucht
 ist.
 
 \subsection{Microsoft Azure Machine Learning Studio}
@@ -187,7 +187,7 @@ Attributs „Answer“ als Label, als auch für die Definition der restlichen
 Attribute als „klassifizierende Attribute“ je ein „Edit Metadata“ Operator
 benötigt. Zuletzt fällt noch auf, dass anstatt eines Decision Tree Algorithmus
 ein „Multiclass Decision Forest“, welcher als Konfiguration eine Decision-Tree
-Anzahl von 1 bekommen hat, zur Berechnung verwendet wurde. Dies war notwendig
+Anzahl von 1 bekommen hat, zur Berechnung verwendet wurde. Dies war notwendig,
 um überhaupt ein auswertbares Ergebnis zu erhalten, welches zumindest
 Ansatzweise mit dem Ergebnis des RapidMiner Studios vergleichbar ist.
 
@@ -202,7 +202,7 @@ Wie aufgrund der Tatsache, dass ein anderer Algorithmus verwendet wurde,
 anzunehmen ist, weicht das Ergebnis vom vorherigen Ergebnis des RapidMiner
 Studios in einigen Punkten ab. Der Baum zeigt, dass nicht zwangsläufig das
 Studienfach ausschlaggebend für eine schlechtere Bewertung war, sondern das
-Semester in welchem die Umfrage durchgeführt wurde.
+Semester, in welchem die Umfrage durchgeführt wurde.
 Auch hier lässt sich anhand der Blätter ablesen, wie groß die „Confidence“ der
 jeweiligen Klasse ist. So lässt sich also interpretieren, dass Studierende, die
 nicht dem „Major“ Angewandte Informatik angehören, dafür allerdings im
